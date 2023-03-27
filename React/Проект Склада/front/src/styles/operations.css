@@ -1,0 +1,31 @@
+/* colors
+    #DBE2EF
+    #F9F7F7
+    #112D4E
+    #3F72AF
+*/
+
+table {
+	border-collapse: collapse;
+    font-family: 'Roboto', sans-serif;
+}
+table td {
+	padding: 15px;
+}
+table thead td {
+	background-color: #112D4E;
+	color: #DBE2EF;
+	font-weight: bold;
+	font-size: 16px;
+	border: 1px solid #112D4E;
+}
+table tbody td {
+	color: #112D4E;
+	border: 1px solid #dddfe1;
+}
+table tbody tr {
+	background-color: #f9fafb;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
