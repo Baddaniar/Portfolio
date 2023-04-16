@@ -7,6 +7,9 @@ const StockInfo = () => {
   const dispatch = useAppDispatch();
   const cashAmount = useAppSelector((state) => state.products.cashAmount);
   const products = useAppSelector((state) => state.products.data);
+  const sellCah = products.reduce((acc, product) => {
+    return acc + (product.sell_price * product.product_amount);
+  }, 0)
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchCash());
@@ -26,9 +29,7 @@ const StockInfo = () => {
         <p>
           Общая ценность товаров на складе:{" "}
           <span className="stock-info">
-            {products.reduce((acc, product) => {
-              return acc + product.sell_price;
-            }, 0)}
+            {sellCah}
           </span>{" "}
           тенге (По цене продажи)
         </p>
