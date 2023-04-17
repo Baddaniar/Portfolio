@@ -14,9 +14,6 @@ const windowWidth = Dimensions.get('window').width;
 
 export default function CartProducts({item, delitem, additem}) {
   
-  //Удалил стейт счетчика и сделать так что бы колиество брали из родительского элемента
-  //Если нету каунта то 1 ну и потом уже делать плюс 1
-  //Неправильная формула. 
   const addHandler = () => {
     let amount = !item.count ? 2: item.count + 1
     let price = parseFloat(item.price)

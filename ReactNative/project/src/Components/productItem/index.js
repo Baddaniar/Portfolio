@@ -5,12 +5,13 @@ import
  MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {constans, helpers} from '../../Services/utils'
-import {storeCart} from '../../Services/store'
+import {storeCart, storeFavorite} from '../../Services/store'
 
 const windowWidth = Dimensions.get('window').width;
 
 export default function ItemProduct({item, navigation}){
   const [cartStatus, setCatrtStatus] = useState(false)
+  const [favoriteStatus, setFavoriteStatus] = useState(false)
 
   const putInCart = async ()=>{
     if(!cartStatus && !item.inCart){
@@ -18,6 +19,11 @@ export default function ItemProduct({item, navigation}){
       setCatrtStatus(true)
       await storeCart.set_cart_list(item)
     }
+  }
+
+  const addToFavorites = async () => {
+    setFavoriteStatus(true)
+    await storeFavorite.set_favorite(item)
   }
 
   return(
@@ -36,6 +42,13 @@ export default function ItemProduct({item, navigation}){
           <TouchableOpacity onPress={putInCart}>
             <MaterialCommunityIcons
               name={cartStatus || item.inCart ? 'cart-check' : 'cart-arrow-down'}
+              size={23}
+              color={constans.colors.mainColor}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={addToFavorites}>
+            <MaterialCommunityIcons
+              name={favoriteStatus ? 'heart' : 'heart_outline'}
               size={23}
               color={constans.colors.mainColor}
             />
